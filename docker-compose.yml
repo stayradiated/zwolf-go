@@ -1,0 +1,15 @@
+version: '3'
+services:
+  server:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+    volumes:
+      - $GOPATH/pkg/mod:/go/pkg/mod
+
+  rabbitmq:
+    image: rabbitmq:3.8.9-alpine
+    restart: unless-stopped
