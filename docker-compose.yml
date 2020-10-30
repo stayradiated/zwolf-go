@@ -1,6 +1,7 @@
 version: '3'
 services:
   server:
+    image: stayradiated/zwolf-go:latest
     build: .
     restart: unless-stopped
     depends_on:
