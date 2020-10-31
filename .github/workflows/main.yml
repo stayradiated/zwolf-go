@@ -52,4 +52,6 @@ jobs:
           script: |
             cd ~/zwolf-go
             git pull --rebase
-            docker-compose restart
+            docker-compose pull
+            docker-compose down -t 2
+            docker-compose up -d
