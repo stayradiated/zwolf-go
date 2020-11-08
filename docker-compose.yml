@@ -3,6 +3,22 @@ services:
   server:
     image: stayradiated/zwolf-go:latest
     restart: unless-stopped
+    environment:
+      - "AMQP_ADDRESS=amqp://guest:guest@rabbitmq:5672/"
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq
+
+  signal:
+    image: stayradiated/zwolf-signal:latest
+    restart: unless-stopped
+    environment:
+      - "OWNER_NUMBER=${OWNER_NUMBER}"
+      - "BOT_NUMBER=${BOT_NUMBER}"
+      - "AMQP_ADDRESS=amqp://guest:guest@rabbitmq:5672/"
+    volumes:
+      - "./signal-cli-config:/root/.local/share/signal-cli"
     depends_on:
       - rabbitmq
     links:
@@ -11,12 +27,3 @@ services:
   rabbitmq:
     image: rabbitmq:3.8.9-alpine
     restart: unless-stopped
-
-  signal:
-    image: stayradiated/zwolf-signal:latest
-    restart: unless-stopped
-    environment:
-      - "OWNER_NUMBER=${OWNER_NUMBER}"
-      - "BOT_NUMBER=${BOT_NUMBER}"
-    volumes:
-      - "./signal-cli-config:/root/.local/share/signal-cli"

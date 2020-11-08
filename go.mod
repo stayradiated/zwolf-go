@@ -8,6 +8,7 @@ require (
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/stayradiated/zwolf-signal v0.0.0-20201108181503-1af577ed28cd
 	github.com/streadway/amqp v1.0.0 // indirect
 )
 
