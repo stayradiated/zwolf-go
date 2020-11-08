@@ -17,7 +17,6 @@ services:
     restart: unless-stopped
     environment:
       - "OWNER_NUMBER=${OWNER_NUMBER}"
-      - "ASSISTANT_NUMBER=${ASSISTANT_NUMBER}"
-      - "ASSISTANT_FOLDER=/root"
+      - "BOT_NUMBER=${BOT_NUMBER}"
     volumes:
       - "./signal-cli-config:/root/.local/share/signal-cli"
